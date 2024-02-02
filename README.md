@@ -8,5 +8,5 @@ Trilha de estudos focada em AWS para certificação Cloud Pratictioner, aliando 
 
 
 
-|[Atividade 01]()|
+|[Atividade 01](Atividade 01)|
 |-------|
