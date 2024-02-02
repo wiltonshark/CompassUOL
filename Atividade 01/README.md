@@ -31,31 +31,31 @@ Parte prática | Requisitos AWS:
 </details>
 
 ### 2 - Criar 1 instância EC2 com o sistema operacional Amazon Linux 2 (Família t3.small, 16 GB SSD);
-- No console da AWS, entrar no serviço de EC2.
-- No menu da esquerda clicamos em Instances
-- No canto superior direito clicamos em Launch Instances
-- No menu de Name e Tags, colocamos as Tags pertinentes ao projeto.
-- No menu de AMI, selecionamos o enunciado
-- Em Instance type, selecionamos o tipo de máquina solicitado
-- Em Key Pair, selecionamos o par de chaves criado anteriormente
-- Em network settings, vou deixar marcado a VPC Padrão
-- Vou criar um Security Group novo, pois posteriormente vou ter que abrir portas específicas para essa instância.
-- Em Configure Storage vamos selecionar o armazenamento requisitado.
-- Após configurar é só clicar no canto inferior direito em Launch Instance.
-- Aguardar conlcuir a inicialização e checks passed no status check da instância para poder utilizá-la.
+- [No console da AWS, entrar no serviço de EC2](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2011-39-11.png)
+- [No menu da esquerda clicamos em Instances](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/2%20-%20Instancia/Screenshot%20from%202024-02-01%2008-33-10.png)
+- [No canto superior direito clicamos em Launch Instances](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/2%20-%20Instancia/Screenshot%20from%202024-02-01%2008-33-36.png)
+- [No menu de Name e Tags, colocamos as Tags pertinentes ao projeto](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/2%20-%20Instancia/Screenshot%20from%202024-02-01%2008-35-46.png)
+- [No menu de AMI, selecionamos o enunciado](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/2%20-%20Instancia/Screenshot%20from%202024-02-01%2008-38-37.png)
+- [Em Instance type, selecionamos o tipo de máquina solicitado](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/2%20-%20Instancia/Screenshot%20from%202024-02-01%2008-39-55.png)
+- [Em Key Pair, selecionamos o par de chaves criado anteriormente](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/2%20-%20Instancia/Screenshot%20from%202024-02-01%2008-40-48.png)
+- [Em network settings, vou deixar marcado a VPC Padrão](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/2%20-%20Instancia/Screenshot%20from%202024-02-01%2008-48-51.png)
+- [Vou criar um Security Group novo, pois posteriormente vou ter que abrir portas específicas para essa instância](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/2%20-%20Instancia/Screenshot%20from%202024-02-01%2008-48-51.png)
+- [Em Configure Storage vamos selecionar o armazenamento requisitado](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/2%20-%20Instancia/Screenshot%20from%202024-02-01%2008-51-45.png)
+- [Após configurar é só clicar no canto inferior direito em Launch Instance](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/2%20-%20Instancia/Screenshot%20from%202024-02-01%2008-51-45.png)
+- [Aguardar conlcuir a inicialização e checks passed no status check da instância para poder utilizá-la](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/2%20-%20Instancia/Screenshot%20from%202024-02-01%2008-58-31.png)
 
 
 ### 3 - Gerar 1 elastic IP e anexar à instância EC2;
-- Na aba do lado esquerdo em EC2, descer até Network & Security e clicar em Elastic IPs
-- No canto direito superior, clicar em Allocate Elastic Ip address
-- Selecionar a região apropriada em Network Border Group e clicar em Allocate
-- Após a alocação, selecionar o IP criado, clicar em actions e em seguida em Associate Elastic IP address
-- Selecionar a Instância a ser anexada e clicar em Associate
+- [Na aba do lado esquerdo em EC2, descer até Network & Security e clicar em Elastic IPs](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/3%20-%20Elastic%20IP/Screenshot%20from%202024-02-01%2014-52-17.png)
+- [No canto direito superior, clicar em Allocate Elastic Ip address](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/3%20-%20Elastic%20IP/Screenshot%20from%202024-02-01%2014-52-59.png)
+- [Selecionar a região apropriada em Network Border Group e clicar em Allocate](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/3%20-%20Elastic%20IP/Screenshot%20from%202024-02-01%2014-53-35.png)
+- [Após a alocação, selecionar o IP criado, clicar em actions e em seguida em Associate Elastic IP address](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/3%20-%20Elastic%20IP/Screenshot%20from%202024-02-01%2014-54-59.png)
+- [Selecionar a Instância a ser anexada e clicar em Associate](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/3%20-%20Elastic%20IP/Screenshot%20from%202024-02-01%2014-56-22.png)
 
-### 4 - Liberar as portas de comunicação para acesso público: (22/TCP, 111/TCP e UDP, 2049/TCP/UDP, 80/TCP, 443/TCP).
-- Para liberar as portas, clicamos em Security Groups no menu de Network & Security em EC2
-- Irei selecionar o Security Group que criado junto com a instância
-- Clicar na aba Inbound Rules e no botão Edito inbound rules
-- Clicar em Add rule para cada porta a ser liberada
-- Selecionar o tipo de protocolo e as portas a serem liberadas e clica em Save Rules
-
+### 4 - Liberar as portas de comunicação para acesso público: (22/TCP, 111/TCP e UDP, 2049/TCP/UDP, 80/TCP, 443/TCP);
+- [Para liberar as portas, clicamos em Security Groups no menu de Network & Security em EC2](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/4%20-%20Portas/Screenshot%20from%202024-02-01%2015-00-06.png)
+- [Irei selecionar o Security Group que criado junto com a instância](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/4%20-%20Portas/Screenshot%20from%202024-02-01%2015-01-18.png)
+- [Clicar na aba Inbound Rules e no botão Edito inbound rules](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/4%20-%20Portas/Screenshot%20from%202024-02-01%2015-01-38.png)
+- [Clicar em Add rule para cada porta a ser liberada](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/4%20-%20Portas/Screenshot%20from%202024-02-01%2015-02-25.png)
+- [Selecionar o tipo de protocolo e as portas a serem liberadas e clica em Save Rules](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/4%20-%20Portas/Screenshot%20from%202024-02-01%2015-40-10.png)
+- [Um pequeno teste conectando na máquina via SSH pelo AWS CLI, provando que a porta 22 está liberada](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/4%20-%20Portas/Screenshot%20from%202024-02-01%2015-45-05.png)
