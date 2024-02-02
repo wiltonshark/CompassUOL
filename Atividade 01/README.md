@@ -5,13 +5,13 @@
 Parte prática | Requisitos AWS:
 
 ### 1 - Gerar uma chave pública para acesso ao ambiente;
-- [Com o console da AWS aberto, vamos pesquisar pelo serviço de EC2](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2011-39-11.png).
-- [Rolar a barra lateral até a opção de Network & Security e selecionar a opção Key Pairs](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2011-44-37.png).
-- [No canto superior direito clicar em Criar Key Pair](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2011-46-38.png).
-- [Colocar um nome para a chave, selecionar o tipo RSA, no formato, selecionar .pem para Linux(ou .ppk para Windows)](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2011-52-53.png).
-- [Clicar em Create Key Pair](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2011-55-02.png).
-- [A AWS armazena somente a chave pública](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2012-01-21.png).
-- [Será entregue via Download a chave privada. Guarde-a com segurança](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2012-01-21.png).
+- [Com o console da AWS aberto, vamos pesquisar pelo serviço de EC2](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2011-39-11.png)
+- [Rolar a barra lateral até a opção de Network & Security e selecionar a opção Key Pairs](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2011-44-37.png)
+- [No canto superior direito clicar em Criar Key Pair](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2011-46-38.png)
+- [Colocar um nome para a chave, selecionar o tipo RSA, no formato, selecionar .pem para Linux(ou .ppk para Windows)](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2011-52-53.png)
+- [Clicar em Create Key Pair](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2011-55-02.png)
+- [A AWS armazena somente a chave pública](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2012-01-21.png)
+- [Será entregue via Download a chave privada. Guarde-a com segurança](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2012-01-21.png)
 
 
 <details>
@@ -21,13 +21,13 @@ Parte prática | Requisitos AWS:
 
   chmod 400 nome_da_chave.pem.
 
-  No meu caso como sei que foi feito o Download via navegador, sei que está na pasta de Downloads.
-  Então vou abrir o terminal, digitar cd Downloads, para trocar o diretório para a pasta de Downloads.
-  Digitar ls para confirmar a presença e o nome da chave.
-  Antes da modificação, podemos verificar suas permissões com ls -la.
-  onde tem [permissões de escrita e leitura para dono e grupo e leitura para outros usuários](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2012-15-45.png).
-  Digitando então o comando chmod 400 AccessKey-Atividade_1_Compass.pem.
-  Após a modificação podemos ver que [apenas o usuário dono da chave tem permissão de leitura agora](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2012-18-02.png).
+  No meu caso como sei que foi feito o Download via navegador, sei que está na pasta de Downloads
+  Então vou abrir o terminal, digitar cd Downloads, para trocar o diretório para a pasta de Downloads
+  Digitar ls para confirmar a presença e o nome da chave
+  Antes da modificação, podemos verificar suas permissões com ls -la
+  onde tem [permissões de escrita e leitura para dono e grupo e leitura para outros usuários](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2012-15-45.png)
+  Digitando então o comando chmod 400 AccessKey-Atividade_1_Compass.pem
+  Após a modificação podemos ver que [apenas o usuário dono da chave tem permissão de leitura agora](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/1%20-%20Chave%20Publica/Screenshot%20from%202024-01-31%2012-18-02.png)
 </details>
 
 ### 2 - Criar 1 instância EC2 com o sistema operacional Amazon Linux 2 (Família t3.small, 16 GB SSD);
