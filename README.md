@@ -4,3 +4,9 @@ Repositório para atividades do curso AWS - Cloud Pratictioner - PB - UNICESUMAR
 
 Trilha de estudos focada em AWS para certificação Cloud Pratictioner, aliando conceitos de Agilidade, Segurança, DevOps e Cloud.
 
+## 📚 Atividades
+
+
+
+|[Atividade 01]()|
+|-------|
