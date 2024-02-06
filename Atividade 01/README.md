@@ -143,7 +143,7 @@ comando](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prin
 
   `systemctl status httpd`
 
-- [Servidor Personalizado](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/7%20-%20Subir%20apache/Screenshot%20from%202024-02-05%2011-04-59.png)
+- [Servidor Personalizado](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/7%20-%20Subir%20apache/Screenshot%20from%202024-02-05%2016-33-50.png)
 
 <details>
   <summary>Extra: Personalizando seu servidor apache.</summary>
