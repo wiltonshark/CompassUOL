@@ -75,18 +75,26 @@ A tarefa envolve criar uma chave pública para acesso, o provisionamento de uma 
 - [Ao clicar em Attach, temos os comandos para anexar o NFS à uma instância.
 Podemos usar via DNS com EFS helper, NFS client (que iremos usar) ou via IP](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2015-38-38.png)
 - [Iremos, abrir o terminal e conectar em nossa instância via SSH para montar o NFS gerado](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2015-48-59.png)
-- [No terminal iremos digitar]((https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2015-48-59.png)) `sudo su` [para permissões de root]((https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2015-48-59.png))
+
 - [Vamos instalar na instância as dependências do EFS com o comando](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2015-52-49.png)
-`sudo yum install -y amazon-efs-utils`
+
+  `sudo yum install -y amazon-efs-utils`
+
 - [Criar um diretório onde será montado o NFS, vou chamá-lo de NFS-Atividade_1_Compass.
-No terminal:](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2016-27-53.png) `mkdir NFS-Atividade_1_Compass`
+No terminal:](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2016-27-53.png)
+
+  `mkdir NFS-Atividade_1_Compass`
+
 - [Agora vamos montar o nfs nessa pasta que criamos com o comando que nos foi passado anteriormente ao clicar em Attach.
 Usando NFS cliente:](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2016-30-45.png)
   ```
   sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 file_system_id.efs.aws-region.amazonaws.com:/ mount_point 
   ```
 - [Vamos verificar a montagem do NFS com o 
-comando](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2016-32-13.png) `df -h`
+comando](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2016-32-13.png)
+
+  `df -h`
+
 - [Tudo ok. Vamos então colocar o comando para montar o NFS automaticamente quando a instância for iniciada. Para isso vamos editar o arquivo /etc/fstab:](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-05%2008-29-24.png)
 - Comandos: 
 
@@ -150,6 +158,8 @@ comando](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prin
 
   `vi index.html`
 
+  Crie o código HTML desejado, pode usar o meu como base, caso deseje.
+
   [Código usado no meu servidor Apache](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/index.html)
 
   PS: Para adicionar ícones, colar os ícones desejados na pasta:
@@ -159,35 +169,118 @@ comando](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prin
 
 ### 8 - Criar um script que valide se o serviço esta online e envie o resultado da validação para o seu diretorio no nfs;
 
-- Crie um novo arquivo de script usando o comando `vi script.sh`
-- Adicione as seguintes linhas de código no arquivo de script:
+- Crie um novo arquivo de script usando o comando
 
-``` bash
-#!/bin/bash
-# Script que verifica o status do serviço httpd e salva o resultado em um arquivo no diretório /home/ec2-user/NFS-Atividade_1_Compass/Wilton
+  `vi script.sh`
 
-DATA=$(date +%d/%m/%Y)
-HORA=$(date +%H:%M:%S)
-SERVICO="httpd"
-STATUS=$(systemctl is-active $SERVICO)
+- [Adicione as seguintes linhas de código no arquivo de script:](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/8%20-%209%20-%2010%20-%20Criar%20scrip/Screenshot%20from%202024-02-06%2008-17-25.png)
 
-if [ $STATUS == "active" ]; then
+  ``` bash
+  #!/bin/bash
+  # Script que verifica o status do serviço httpd e salva o resultado em um arquivo no diretório /home/ec2-user/NFS-Atividade_1_Compass/Wilton
+
+  DATA=$(date +%d/%m/%Y)
+  HORA=$(date +%H:%M:%S)
+  SERVICO="httpd"
+  STATUS=$(systemctl is-active $SERVICO)
+
+  if [ $STATUS == "active" ]; then
     MENSAGEM="O $SERVICO está ONLINE"
     echo "$DATA $HORA - $SERVICO - active - $MENSAGEM" >> /home/ec2-user/NFS-Atividade_1_Compass/Wilton/online.txt
-else
-    MENSAGEM="O $SERVICO está offline"
+  else
+    MENSAGEM="O $SERVICO está OFFLINE"
     echo "$DATA $HORA - $SERVICO - inactive - $MENSAGEM" >> /home/ec2-user/NFS-Atividade_1_Compass/Wilton/offline.txt
 
-fi
-```
+  fi
+  ```
 
-Salve o arquivo de script.
-- Execute o comando chmod +x script.sh para tornar o arquivo de script executável.
-(O nome em verde confirma se o arquivo é executável)
-- Execute o comando ./script.sh ou bash script.sh para executar o script.
-9 - O script deve conter - Data HORA + nome do serviço + Status + mensagem
-personalizada de ONLINE ou offline;
-10 - O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o
-serviço OFFLINE;
-- Vamos digitar systemctl stop httpd, executar o script e depois systemctl start httpd e executar o script novamente pra verificar os arquivos de online e offline foram escritos normalmente.
-11 - Preparar a execução automatizada do script a cada 5 minutos.
+- Salve o [arquivo de script](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/script.sh).
+- Para tornar o arquivo de script executável, digite o comando:
+
+  `chmod +x script.sh` 
+
+- [O nome em verde confirma que o arquivo é executável](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/8%20-%209%20-%2010%20-%20Criar%20scrip/Screenshot%20from%202024-02-06%2008-19-39.png)
+- Digite um dos seguintes comandos para executar o script:
+
+  `./script.sh` ou `bash script.sh` 
+
+### 9 - O script deve conter - Data HORA + nome do serviço + Status + mensagem personalizada de ONLINE ou offline;
+
+- A linha echo do script, joga as variáveis especificadas dentro do arquivo especificado
+
+  ``` bash
+    echo "$DATA $HORA - $SERVICO - active - $MENSAGEM" >> /home/ec2-user/NFS-Atividade_1_Compass/Wilton/online.txt
+  ```
+
+### 10 - O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o serviço OFFLINE;
+
+- Para tal, no script utilizamos a estrutura de seleção `if-else`, onde, se a condição for verdadeira, faz-se então uma ação, e, caso a condição anterior não seja satisfeita, faz-se então outra ação especificada.
+- Em sumo: Se o servidor estiver online, jogue a mensagem de texto contendo as variáveis com valores x no arquivo x; 
+se não, jogue as variáveis com valores y no arquivo y.
+
+  ``` bash
+  if [ $STATUS == "active" ]; then
+    MENSAGEM="O $SERVICO está ONLINE"
+    echo "$DATA $HORA - $SERVICO - active - $MENSAGEM" >> /home/ec2-user/NFS-Atividade_1_Compass/Wilton/online.txt
+  else
+    MENSAGEM="O $SERVICO está OFFLINE"
+    echo "$DATA $HORA - $SERVICO - inactive - $MENSAGEM" >> /home/ec2-user/NFS-Atividade_1_Compass/Wilton/offline.txt
+  ```
+
+<details>
+    <summary>Teste de bancada</summary>
+
+  Vamos para o servidor apache:
+
+  `systemctl stop httpd` 
+
+  executar o script:
+
+  `./script.sh`
+
+  iniciar o servidor apache:
+
+  `systemctl start httpd`
+
+  executar o script novamente:
+
+  `./script.sh`
+
+  Ao verificar os [arquivos de logs online e offline]((https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/8%20-%209%20-%2010%20-%20Criar%20scrip/Screenshot%20from%202024-02-06%2008-26-16.png)) com os comandos:
+  
+  `cat online.txt` e `cat offline.txt`
+
+  Veremos que a nossa interrupção e inicialização manual do servidor, foram registrada nos logs com sucesso.
+</details>
+
+
+### 11 - Preparar a execução automatizada do script a cada 5 minutos.
+
+- Para a execução automatizada do script, usarei a ferramenta Crontab, pela sua facilidade de utilização
+
+- [Editar o arquivo /etc/crontab](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/11%20-%20Automacao/Screenshot%20from%202024-02-06%2009-00-10.png)
+
+  `sudo su`
+
+  `cd /etc`
+
+  `vi crontab`
+
+- [Adicione a seguinte linha de código no arquivo:](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/11%20-%20Automacao/Screenshot%20from%202024-02-06%2009-12-15.png)
+
+  `*/5 * * * *    root    /home/ec2-user/script.sh`
+
+- Salve o arquivo
+- [Podemos ver que os logs estão sendo salvos corretamente e, agora, de forma automática.](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/11%20-%20Automacao/Screenshot%20from%202024-02-06%2009-22-29.png)
+
+<details>
+  <summary>Curiosidade:</summary>
+
+  No crontab são utilizados seis campos para definir em qual minuto, hora, dia, mes e dia da semana você deseja que a tarefa seja realizada. 
+  
+  Então para fazer uma ação aos 5 minutos DE CADA HORA, colocamos no primeiro campo referente aos minutos o valor de 5. 
+  
+  Mas como fazer para executar de 5 em 5 minutos?
+
+  `*/5` significa criar uma lista de todos os minutos e executar o comando a cada 5 interações de valores da lista.
+</details>

@@ -10,7 +10,7 @@ if [ $STATUS == "active" ]; then
     MENSAGEM="O $SERVICO está ONLINE"
     echo "$DATA $HORA - $SERVICO - active - $MENSAGEM" >> /home/ec2-user/NFS-Atividade_1_Compass/Wilton/online.txt
 else
-    MENSAGEM="O $SERVICO está offline"
+    MENSAGEM="O $SERVICO está OFFLINE"
     echo "$DATA $HORA - $SERVICO - inactive - $MENSAGEM" >> /home/ec2-user/NFS-Atividade_1_Compass/Wilton/offline.txt
 
 fi
