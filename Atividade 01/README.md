@@ -206,7 +206,7 @@ comando](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prin
 
 ### 9 - O script deve conter - Data HORA + nome do serviço + Status + mensagem personalizada de ONLINE ou offline;
 
-- A linha echo do script, joga as variáveis especificadas dentro do arquivo especificado
+- A função echo do script, escreve os valores das variáveis dentro do arquivo especificado
 
   ``` bash
     echo "$DATA $HORA - $SERVICO - active - $MENSAGEM" >> /home/ec2-user/NFS-Atividade_1_Compass/Wilton/online.txt
@@ -216,7 +216,7 @@ comando](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prin
 
 - Para tal, no script utilizamos a estrutura de seleção `if-else`, onde, se a condição for verdadeira, faz-se então uma ação, e, caso a condição anterior não seja satisfeita, faz-se então outra ação especificada.
 - Em sumo: Se o servidor estiver online, jogue a mensagem de texto contendo as variáveis com valores x no arquivo x; 
-se não, jogue as variáveis com valores y no arquivo y.
+se não, jogue as variáveis com valores x e/ou y no arquivo y.
 
   ``` bash
   if [ $STATUS == "active" ]; then
