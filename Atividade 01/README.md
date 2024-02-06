@@ -150,9 +150,44 @@ comando](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prin
 
   `vi index.html`
 
-Código usado no meu Apache:
+  [Código usado no meu servidor Apache](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/index.html)
 
-***Copiar e colar index.html***
+  PS: Para adicionar ícones, colar os ícones desejados na pasta:
 
-PS: para adicionar ícones, colar os ícones desejados na pasta:
-/usr/share/httpd/icons
+  `/usr/share/httpd/icons`
+</details>
+
+### 8 - Criar um script que valide se o serviço esta online e envie o resultado da validação para o seu diretorio no nfs;
+
+- Crie um novo arquivo de script usando o comando `vi script.sh`
+- Adicione as seguintes linhas de código no arquivo de script:
+
+``` bash
+#!/bin/bash
+# Script que verifica o status do serviço httpd e salva o resultado em um arquivo no diretório /home/ec2-user/NFS-Atividade_1_Compass/Wilton
+
+DATA=$(date +%d/%m/%Y)
+HORA=$(date +%H:%M:%S)
+SERVICO="httpd"
+STATUS=$(systemctl is-active $SERVICO)
+
+if [ $STATUS == "active" ]; then
+    MENSAGEM="O $SERVICO está ONLINE"
+    echo "$DATA $HORA - $SERVICO - active - $MENSAGEM" >> /home/ec2-user/NFS-Atividade_1_Compass/Wilton/online.txt
+else
+    MENSAGEM="O $SERVICO está offline"
+    echo "$DATA $HORA - $SERVICO - inactive - $MENSAGEM" >> /home/ec2-user/NFS-Atividade_1_Compass/Wilton/offline.txt
+
+fi
+```
+
+Salve o arquivo de script.
+- Execute o comando chmod +x script.sh para tornar o arquivo de script executável.
+(O nome em verde confirma se o arquivo é executável)
+- Execute o comando ./script.sh ou bash script.sh para executar o script.
+9 - O script deve conter - Data HORA + nome do serviço + Status + mensagem
+personalizada de ONLINE ou offline;
+10 - O script deve gerar 2 arquivos de saida: 1 para o serviço online e 1 para o
+serviço OFFLINE;
+- Vamos digitar systemctl stop httpd, executar o script e depois systemctl start httpd e executar o script novamente pra verificar os arquivos de online e offline foram escritos normalmente.
+11 - Preparar a execução automatizada do script a cada 5 minutos.
