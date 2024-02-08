@@ -90,8 +90,7 @@ Usando NFS cliente:](https://github.com/wiltonshark/CompassUOL/blob/main/Ativida
   ```
   sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 file_system_id.efs.aws-region.amazonaws.com:/ mount_point 
   ```
-- [Vamos verificar a montagem do NFS com o 
-comando](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2016-32-13.png)
+- [Vamos verificar a montagem do NFS com o comando](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2016-32-13.png)
 
   `df -h`
 
@@ -246,7 +245,7 @@ se não, jogue as variáveis com valores x e/ou y no arquivo y.
 
   `./script.sh`
 
-  Ao verificar os [arquivos de logs online e offline]((https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/8%20-%209%20-%2010%20-%20Criar%20scrip/Screenshot%20from%202024-02-06%2008-26-16.png)) com os comandos:
+  Ao verificar os [arquivos de logs online e offline](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/8%20-%209%20-%2010%20-%20Criar%20scrip/Screenshot%20from%202024-02-06%2008-26-16.png) com os comandos:
   
   `cat online.txt` e `cat offline.txt`
 
