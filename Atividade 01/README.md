@@ -275,7 +275,7 @@ se não, jogue as variáveis com valores x e/ou y no arquivo y.
 <details>
   <summary>Curiosidade:</summary>
 
-  No crontab são utilizados seis campos para definir em qual minuto, hora, dia, mes e dia da semana você deseja que a tarefa seja realizada. 
+  No crontab são utilizados cinco campos para definir em qual minuto, hora, dia, mes e dia da semana você deseja que a tarefa seja realizada. 
   
   Então para fazer uma ação aos 5 minutos DE CADA HORA, colocamos no primeiro campo referente aos minutos o valor de 5. 
   
