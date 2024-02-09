@@ -56,7 +56,7 @@ A tarefa envolve criar uma chave pública para acesso, o provisionamento de uma 
 
 ### 4 - Liberar as portas de comunicação para acesso público: (22/TCP, 111/TCP e UDP, 2049/TCP/UDP, 80/TCP, 443/TCP);
 - [Para liberar as portas, clicamos em Security Groups no menu de Network & Security em EC2](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/4%20-%20Portas/Screenshot%20from%202024-02-01%2015-00-06.png)
-- [Irei selecionar o Security Group que criado junto com a instância](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/4%20-%20Portas/Screenshot%20from%202024-02-01%2015-01-18.png)
+- [Irei selecionar o Security Group que foi criado junto com a instância](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/4%20-%20Portas/Screenshot%20from%202024-02-01%2015-01-18.png)
 - [Clicar na aba Inbound Rules e no botão Edito inbound rules](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/4%20-%20Portas/Screenshot%20from%202024-02-01%2015-01-38.png)
 - [Clicar em Add Rule para cada porta a ser liberada](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/4%20-%20Portas/Screenshot%20from%202024-02-01%2015-02-25.png)
 - [Selecionar o tipo de protocolo e as portas a serem liberadas e clica em Save Rules](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/4%20-%20Portas/Screenshot%20from%202024-02-01%2015-40-10.png)
@@ -74,7 +74,7 @@ A tarefa envolve criar uma chave pública para acesso, o provisionamento de uma 
 - [No menu Mount Targets, vou trocar o Security Group padrão pelo que criamos anteriormente, por já estar com a porta NFS liberada e clicar em Save](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2015-34-08.png)
 - [Ao clicar em Attach, temos os comandos para anexar o NFS à uma instância.
 Podemos usar via DNS com EFS helper, NFS client (que iremos usar) ou via IP](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2015-38-38.png)
-- [Iremos, abrir o terminal e conectar em nossa instância via SSH para montar o NFS gerado](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2015-48-59.png)
+- [Iremos abrir o terminal e conectar em nossa instância via SSH para montar o NFS gerado](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2015-48-59.png)
 
 - [Vamos instalar na instância as dependências do EFS com o comando](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/Prints/5%20-%20Configurar%20NFS/Screenshot%20from%202024-02-02%2015-52-49.png)
 
