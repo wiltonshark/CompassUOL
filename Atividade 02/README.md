@@ -20,4 +20,4 @@ Wordpress
 Balancer AWS para a aplicação
 Wordpress
 
-<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Atividade%2002.png>
+<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Atividade%2002.png width=60% >
