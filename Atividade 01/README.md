@@ -1,6 +1,6 @@
 ## 📚 Documentação
 
-[Objetivo](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2001/PBD-Atividade%20de%20Linux%20-%20AWS%20-%20UNICESUMAR-290124-210439.pdf)
+Objetivo
 
 A tarefa envolve criar uma chave pública para acesso, o provisionamento de uma instância EC2 utilizando o sistema operacional Amazon Linux 2, a alocação de um endereço IP elástico que será associado à instância EC2, a abertura de portas de comunicação para permitir acesso público, a configuração do sistema de arquivos NFS, a criação de um diretório correspondente ao nome do usuário no filesystem do NFS, a instalação e configuração do servidor Apache, a elaboração de um script para verificar a disponibilidade do serviço e enviar os resultados para o diretório NFS, e a configuração da execução automatizada do script a cada 5 minutos.
 
