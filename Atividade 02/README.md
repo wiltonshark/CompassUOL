@@ -28,7 +28,8 @@ Pontos de atenção:
 
 ### 1 - Criar uma VPC
 
-- Neste primeiro passo vamos selecionar VPC e criar uma nova, incluindo a marcação do Nat Gateway durante o processo de criação. O Nat Gateway será utilizado para proporcionar conectividade à Internet para as instâncias privadas. Para isso, abra o menu de criação de VPC no seu console AWS > Create VPC > VPC and more > Number of Availability Zones = 2, Numbero of public subnets = 2, Number of private subnets = 2, NAT gateways = 1 per AZ.
+- Neste primeiro passo vamos selecionar VPC e criar uma nova, incluindo a marcação do Nat Gateway durante o processo de criação. 
+- O Nat Gateway será utilizado para proporcionar conectividade à Internet para as instâncias privadas. - Para isso, abra o menu de criação de VPC no seu console AWS > Create VPC > VPC and more > Number of Availability Zones = 2, Numbero of public subnets = 2, Number of private subnets = 2, NAT gateways = 1 per AZ.
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/VPC/vpc.png width=60%>
 
