@@ -24,12 +24,13 @@ Pontos de atenção:
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Atividade%2002.png width=60% >
 
-Vejamos, o que vou precisar?
+# | Parte prática |
 
-- Dúvida: "Efetuar Deploy de uma aplicação Wordpress com:container de aplicação RDS database Mysql"
-Efetuar deploy na instância e usar apenas docker para mysql ou efetuar deploy de container wordpress e mysql e usar docker-compose? Testar e ver como configurar conexão do mysql no docker caso não for usar docker-compose no wordpress
+### 1 - Criar uma VPC
 
-1 - VPC
+- Neste primeiro passo vamos selecionar VPC e criar uma nova, incluindo a marcação do Nat Gateway durante o processo de criação. O Nat Gateway será utilizado para proporcionar conectividade à Internet para as instâncias privadas. Para isso, abra o menu de criação de VPC no seu console AWS > Create VPC > VPC and more > Number of Availability Zones = 2, Numbero of public subnets = 2, Number of private subnets = 2, NAT gateways = 1 per AZ.
+
+<img src=>
 
 2 - Criar Security Groups (apenas do load balancer com saida pra internet, restante acesso interno)
 
@@ -55,3 +56,6 @@ Efetuar deploy na instância e usar apenas docker para mysql ou efetuar deploy d
 8 - Criação do Target Group
 
 9 - Auto Scaling Group
+
+- Dúvida: "Efetuar Deploy de uma aplicação Wordpress com:container de aplicação RDS database Mysql"
+Efetuar deploy na instância e usar apenas docker para mysql ou efetuar deploy de container wordpress e mysql e usar docker-compose? Testar e ver como configurar conexão do mysql no docker caso não for usar docker-compose no wordpress
