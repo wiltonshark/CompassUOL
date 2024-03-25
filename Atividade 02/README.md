@@ -73,6 +73,19 @@ Pontos de atenção:
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/EFS/EFS.png width=60%>
 
 
+### 4 - Criação do RDS
+
+- Neste passo, vamos criar o banco de dados para o container de aplicação RDS database Mysql.
+- Vamos em Amazon RDS > Dashboard > Create database.
+- Selecionar MySQL, Template = Free Tier.
+- Criar username e password, selecionar o tipo de instância e storage.
+- Como não criei o template das instâncias ainda, vou selecionar em não conectar à uma instância EC2.
+- Não selecionar acesso público!
+- Selecionar a VPC e o Security Group criados.
+- Criar um nome inicial do Database.
+
+<img src= width=60%>
+
 3 - LoadBalancer com acesso aos usuários
 
 4 - Availability Zone 1 e 2
