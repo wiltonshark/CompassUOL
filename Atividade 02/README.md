@@ -32,7 +32,34 @@ Pontos de atenção:
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/vpc.png width=60%>
 
-2 - Criar Security Groups (apenas do load balancer com saida pra internet, restante acesso interno)
+### 2 - Criar os Security Groups
+
+SG-PUBLIC - do Load Balancer
+| Tipo            | Protocolo | Porta | Origem    |
+|-----------------|-----------|-------|-----------|
+| HTTP            | TCP       | 80    | 0.0.0.0/0 |
+| HTTPS           | TCP       | 443   | ::/0      |
+
+
+SG-PRIVATE - das Instâncias EC2
+
+| Tipo            | Protocolo | Porta | Origem    |
+|-----------------|-----------|-------|-----------|
+| HTTP            | TCP       | 80    | SG-PUBLIC |
+| HTTPS           | TCP       | 443   | SG-PUBLIC |
+
+
+SG-EFS - para conexão do NFS
+| Tipo            | Protocolo | Porta | Origem     |
+|-----------------|-----------|-------|------------|
+| NFS             | TCP       | 2049  | SG-PRIVATE |
+
+
+SG DO RDS - para conexão do banco de dados
+| Tipo            | Protocolo | Porta | Origem     |
+|-----------------|-----------|-------|------------|
+| MYSQL/AURORA    | TCP       | 3306  | SG-PRIVATE |
+
 
 3 - LoadBalancer com acesso aos usuários
 
@@ -51,7 +78,7 @@ Pontos de atenção:
 
 6 - Criar EFS
 
-7 - configuração da utilização doserviço EFS AWS para estáticos do container de aplicação Wordpress
+7 - configuração da utilização do serviço EFS AWS para estáticos do container de aplicação Wordpress
 
 8 - Criação do Target Group
 
