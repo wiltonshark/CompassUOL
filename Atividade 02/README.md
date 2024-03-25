@@ -84,7 +84,7 @@ Pontos de atenção:
 - Selecionar a VPC e o Security Group criados.
 - Criar um nome inicial do Database.
 
-<img src= width=60%>
+<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/RDS/RDS.png width=60%>
 
 3 - LoadBalancer com acesso aos usuários
 
