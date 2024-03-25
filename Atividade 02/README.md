@@ -26,6 +26,9 @@ Pontos de atenção:
 
 Vejamos, o que vou precisar?
 
+- Dúvida: "Efetuar Deploy de uma aplicação Wordpress com:container de aplicação RDS database Mysql"
+Efetuar deploy na instância e usar apenas docker para mysql ou efetuar deploy de container wordpress e mysql e usar docker-compose? Testar e ver como configurar conexão do mysql no docker caso não for usar docker-compose no wordpress
+
 1 - VPC
 
 2 - Criar Security Groups (apenas do load balancer com saida pra internet, restante acesso interno)
