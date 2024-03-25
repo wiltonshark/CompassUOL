@@ -68,7 +68,7 @@ Pontos de atenção:
 - Neste passo, vamos criar um EFS para utilização das pastas públicas e estáticos do wordpress, do container de aplicação Wordpress. Vamos em EFS > Create File System.
 Selecionar a VPC criada, as subnets privadas e o Security Group do EFS.
 
-<img src= width=60%>
+<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/EFS/EFS.png width=60%>
 
 
 3 - LoadBalancer com acesso aos usuários
