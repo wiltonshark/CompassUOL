@@ -55,7 +55,7 @@ SG-EFS - para conexão do NFS
 | NFS             | TCP       | 2049  | SG-PRIVATE |
 
 
-SG DO RDS - para conexão do banco de dados
+SG-RDS - para conexão do banco de dados
 | Tipo            | Protocolo | Porta | Origem     |
 |-----------------|-----------|-------|------------|
 | MYSQL/AURORA    | TCP       | 3306  | SG-PRIVATE |
