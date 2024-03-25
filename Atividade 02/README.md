@@ -34,6 +34,8 @@ Pontos de atenção:
 
 ### 2 - Criar os Security Groups
 
+- Neste passo, vamos no menu de EC2 > Network & Security ou VPC > Security, Security Group > Create Security Group e criar os grupo as seguir com seus protocolos e origem:
+
 [SG-PUBLIC](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Security%20Groups/SG-PUBLIC.png) - do Load Balancer
 | Tipo            | Protocolo | Porta | Origem    |
 |-----------------|-----------|-------|-----------|
@@ -61,6 +63,14 @@ Pontos de atenção:
 | MYSQL/AURORA    | TCP       | 3306  | SG-PRIVATE |
 
 
+### 3 - Criação do EFS
+
+- Neste passo, vamos criar um EFS para utilização das pastas públicas e estáticos do wordpress, do container de aplicação Wordpress. Vamos em EFS > Create File System.
+Selecionar a VPC criada, as subnets privadas e o Security Group do EFS.
+
+<img src= width=60%>
+
+
 3 - LoadBalancer com acesso aos usuários
 
 4 - Availability Zone 1 e 2
@@ -86,3 +96,4 @@ Pontos de atenção:
 
 - Dúvida: "Efetuar Deploy de uma aplicação Wordpress com:container de aplicação RDS database Mysql"
 Efetuar deploy na instância e usar apenas docker para mysql ou efetuar deploy de container wordpress e mysql e usar docker-compose? Testar e ver como configurar conexão do mysql no docker caso não for usar docker-compose no wordpress
+- Configuração da utilização do serviço EFS AWS para estáticos do container de aplicação Wordpress - CONTAINER!!! melhor o docker compose então.
