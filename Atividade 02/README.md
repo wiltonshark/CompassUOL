@@ -30,18 +30,18 @@ Pontos de atenção:
 
 - Neste primeiro passo vamos selecionar VPC e criar uma nova, incluindo a marcação do Nat Gateway durante o processo de criação. O Nat Gateway será utilizado para proporcionar conectividade à Internet para as instâncias privadas. Para isso, abra o menu de criação de VPC no seu console AWS > Create VPC > VPC and more > Number of Availability Zones = 2, Numbero of public subnets = 2, Number of private subnets = 2, NAT gateways = 1 per AZ.
 
-<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/vpc.png width=60%>
+<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/VPC/vpc.png width=60%>
 
 ### 2 - Criar os Security Groups
 
-SG-PUBLIC - do Load Balancer
+[SG-PUBLIC] (https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Security%20Groups/SG-PUBLIC.png) - do Load Balancer
 | Tipo            | Protocolo | Porta | Origem    |
 |-----------------|-----------|-------|-----------|
 | HTTP            | TCP       | 80    | 0.0.0.0/0 |
 | HTTPS           | TCP       | 443   | ::/0      |
 
 
-SG-PRIVATE - das Instâncias EC2
+[SG-PRIVATE] (https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Security%20Groups/SG-PRIVATE.png) - das Instâncias EC2
 
 | Tipo            | Protocolo | Porta | Origem    |
 |-----------------|-----------|-------|-----------|
@@ -49,13 +49,13 @@ SG-PRIVATE - das Instâncias EC2
 | HTTPS           | TCP       | 443   | SG-PUBLIC |
 
 
-SG-EFS - para conexão do NFS
+[SG-EFS] (https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Security%20Groups/SG-EFS.png) - para conexão do NFS
 | Tipo            | Protocolo | Porta | Origem     |
 |-----------------|-----------|-------|------------|
 | NFS             | TCP       | 2049  | SG-PRIVATE |
 
 
-SG-RDS - para conexão do banco de dados
+[SG-RDS] (https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Security%20Groups/SG-RDS.png) - para conexão do banco de dados
 | Tipo            | Protocolo | Porta | Origem     |
 |-----------------|-----------|-------|------------|
 | MYSQL/AURORA    | TCP       | 3306  | SG-PRIVATE |
