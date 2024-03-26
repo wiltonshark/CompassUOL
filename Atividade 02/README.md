@@ -181,31 +181,8 @@ Pontos de atenção:
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Auto%20Scaling/ASG.png width=60%>
 
+# | --- Teste --- |
 
+- Neste passo, se tudo estiver configurado corretamente, podemos acessar a aplicação pelo DNS do Load Balancer (e não pelo IP das instâncias).
 
-3 - LoadBalancer com acesso aos usuários
-
-4 - Availability Zone 1 e 2
-
-5 - Criar template do ec2 (lembrar das tags)
-
-5a - Instalação e configuração do DOCKER ou CONTAINERD no host EC2 (com mysql client?!-docker compose)
-
-5b - Ponto adicional para o trabalho que utilizar a instalação via script de Start Instance (user_data.sh) - usar no template
-
-5c - Um Ec2 Instance com Wordpress em cada AZ (Usar template ja com instalacao no userdata e auto escaling nos azs)
-
-5d - Ambas EC2 conecado ao Amazon RDS MySQL
-(Efetuar Deploy de uma aplicação Wordpress com:container de aplicação RDS database Mysql)
-
-6 - Criar EFS
-
-7 - configuração da utilização do serviço EFS AWS para estáticos do container de aplicação Wordpress
-
-8 - Criação do Target Group
-
-9 - Auto Scaling Group
-
-- Dúvida: "Efetuar Deploy de uma aplicação Wordpress com:container de aplicação RDS database Mysql"
-Efetuar deploy na instância e usar apenas docker para mysql ou efetuar deploy de container wordpress e mysql e usar docker-compose? Testar e ver como configurar conexão do mysql no docker caso não for usar docker-compose no wordpress
-- Configuração da utilização do serviço EFS AWS para estáticos do container de aplicação Wordpress - CONTAINER!!! melhor o docker compose então.
+<img src= width=60%>
