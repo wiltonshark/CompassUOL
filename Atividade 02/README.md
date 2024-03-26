@@ -179,7 +179,7 @@ Pontos de atenção:
 - Para o group Size vou colocar como Desire calacity = 2, Min = 2 e Max = 4.
 - Vou ativar o automatic scaling para 80% de utilização da CPU.
 
-<img src= width=60%>
+<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Auto%20Scaling/ASG.png width=60%>
 
 
 
