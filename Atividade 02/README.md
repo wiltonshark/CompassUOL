@@ -185,4 +185,4 @@ Pontos de atenção:
 
 - Neste passo, se tudo estiver configurado corretamente, podemos acessar a aplicação pelo DNS do Load Balancer (e não pelo IP das instâncias).
 
-<img src= width=60%>
+<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Teste%20WP/TesteWP.png width=60%>
