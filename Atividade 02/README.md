@@ -30,13 +30,13 @@ Pontos de atenção:
 
 - Neste primeiro passo vamos selecionar VPC e criar uma nova, incluindo a marcação do Nat Gateway durante o processo de criação. 
 - O Nat Gateway será utilizado para proporcionar conectividade à Internet para as instâncias privadas.
-- Para isso, abra o menu de criação de VPC no seu console AWS > Create VPC > VPC and more > Number of Availability Zones = 2, Numbero of public subnets = 2, Number of private subnets = 2, NAT gateways = 1 per AZ.
+- Para isso, abra o menu de criação de VPC no seu console AWS -> Create VPC -> VPC and more -> Number of Availability Zones = 2, Numbero of public subnets = 2, Number of private subnets = 2, NAT gateways = 1 per AZ.
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/VPC/vpc.png width=60%>
 
 ### 2 - Criar os Security Groups
 
-- Neste passo, vamos no menu de EC2 > Network & Security ou VPC > Security, Security Group > Create Security Group e criar os grupo as seguir com seus protocolos e origem:
+- Neste passo, vamos no menu de EC2 -> Network & Security ou VPC -> Security, Security Group -> Create Security Group e criar os grupo as seguir com seus protocolos e origem:
 
 [SG-PUBLIC](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Security%20Groups/SG-PUBLIC.png) - do Load Balancer
 | Tipo            | Protocolo | Porta | Origem    |
@@ -65,18 +65,18 @@ Pontos de atenção:
 | MYSQL/AURORA    | TCP       | 3306  | SG-PRIVATE |
 
 
-### 3 - Criação do EFS
+### 3 - Criar o EFS
 
-- Neste passo, vamos criar um EFS para utilização das pastas públicas e estáticos do wordpress, do container de aplicação Wordpress. Vamos em EFS > Create File System.
+- Neste passo, vamos criar um EFS para utilização das pastas públicas e estáticos do wordpress, do container de aplicação Wordpress. Vamos em EFS -> Create File System.
 - Selecionar a VPC criada, as subnets privadas e o Security Group do EFS.
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/EFS/EFS.png width=60%>
 
 
-### 4 - Criação do RDS
+### 4 - Criar o RDS
 
 - Neste passo, vamos criar o banco de dados para o container de aplicação RDS database Mysql.
-- Vamos em Amazon RDS > Dashboard > Create database.
+- Vamos em Amazon RDS -> Dashboard -> Create database.
 - Selecionar MySQL, Template = Free Tier.
 - Criar username e password, selecionar o tipo de instância e storage.
 - Como não criei o template das instâncias ainda, vou selecionar em não conectar à uma instância EC2.
@@ -85,6 +85,52 @@ Pontos de atenção:
 - Criar um nome inicial do Database.
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/RDS/RDS.png width=60%>
+
+
+### 5 - Criar o Template da Instância
+
+- Como vamos trabalhar com auto scaling, é essencial criar um template já com os detalhes do que vamos querer instalar na imagem.
+- Imagina ter que configurar manualmente toda instância que sobe quando o workload aumenta? Seria muito oneroso.
+- Para isso iremos em EC2 -> Launch Templates -> Create launch template.
+
+- Vamos criar uma instância Amazon Linux t3.small, criar uma chave SSH, conectá-la ao security group SG-PRIVATE, colocar as tags pertinentes ao PB e incluir o user_data.sh para instalar o docker, wordpress, nfs-utils, montar o efs e criar o yaml para conectar ao rds.
+
+<details>
+  <summary>user_data.sh</summary>
+    #!/bin/bash
+    sudo su
+    yum update -y
+    yum install docker -y
+    systemctl start docker
+    systemctl enable docker
+    usermod -aG docker ec2-user
+    curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+    mv /usr/local/bin/docker-compose /bin/docker-compose
+    yum install nfs-utils -y
+    mkdir /mnt/efs/
+    chmod +rwx /mnt/efs/
+    mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport ID_DO_SEU_EFS.efs.us-east-1.amazonaws.com:/ /mnt/efs
+    echo "ID_DO_SEU_EFS.efs.us-east-1.amazonaws.com:/ /mnt/efs nfs defaults 0 0" >> /etc/fstab
+    echo "version: '3.8'
+    services:
+    wordpress:
+        image: wordpress:latest
+        volumes:
+            - /mnt/efs/wordpress:/var/www/html
+        ports:
+            - 80:80
+        restart: always
+        environment:
+            WORDPRESS_DB_HOST: ENDPOINT DO SEU RDS
+            WORDPRESS_DB_USER: MASTER USERNAME DO SEU RDS
+            WORDPRESS_DB_PASSWORD: MASTER PASSWORD DO SEU RDS
+            WORDPRESS_DB_NAME: INITIAL NAME DO SEU RDS
+            WORDPRESS_TABLE_CONFIG: wp_" | sudo tee /mnt/efs/docker-compose.yml
+    cd /mnt/efs && sudo docker-compose up -d`
+</details>
+
+<img src= width=60%>
 
 3 - LoadBalancer com acesso aos usuários
 
