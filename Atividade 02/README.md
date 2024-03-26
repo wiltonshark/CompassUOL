@@ -32,7 +32,7 @@ Pontos de atenção:
 - O Nat Gateway será utilizado para proporcionar conectividade à Internet para as instâncias privadas.
 - Para isso, abra o menu de criação de VPC no seu console AWS -> Create VPC -> VPC and more -> Number of Availability Zones = 2, Numbero of public subnets = 2, Number of private subnets = 2, NAT gateways = 1 per AZ.
 
-<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/VPC/vpc.png width=60%>
+<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/VPC/VPC.png width=60%>
 
 ## 2 - Criar os Security Groups
 
@@ -140,7 +140,7 @@ Pontos de atenção:
 - Para isso vamos em EC2 -> Load Balancing -> Target Groups -> Create target froup
 - Selecionar o tipo Instances, protocolo HTTP, selecionar a VPC criada, como o auto scaling ainda não foi criado, não há instâncias para selecionar, vamos deixar assim por enquanto.
 
-<img src= width=60%>
+<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/TargetGroup/TargetGroup.png width=60%>
 
 3 - LoadBalancer com acesso aos usuários
 
