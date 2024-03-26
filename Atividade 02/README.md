@@ -24,9 +24,9 @@ Pontos de atenção:
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Atividade%2002.png width=60% >
 
-# <font color=12293b>| --- Parte prática --- |</b></font>
+# <font color=12293b><b>| --- Parte prática --- |</b></font>
 
-## <font color=00a1c9>1 - Criar uma VPC</b></font>
+## <font color=00a1c9><b>1 - Criar uma VPC</b></font>
 
 - Neste primeiro passo vamos selecionar VPC e criar uma nova, incluindo a marcação do Nat Gateway durante o processo de criação. 
 - O Nat Gateway será utilizado para proporcionar conectividade à Internet para as instâncias privadas.
@@ -34,7 +34,7 @@ Pontos de atenção:
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/VPC/vpc.png width=60%>
 
-## <font color=00a1c9>2 - Criar os Security Groups</b></font>
+## <font color=00a1c9>2 - Criar os Security Groups</font>
 
 - Neste passo, vamos no menu de EC2 -> Network & Security ou VPC -> Security, Security Group -> Create Security Group e criar os grupo as seguir com seus protocolos e origem:
 
@@ -65,7 +65,7 @@ Pontos de atenção:
 | MYSQL/AURORA    | TCP       | 3306  | SG-PRIVATE |
 
 
-## <font color=00a1c9>3 - Criar o EFS</b></font>
+## <font color=00a1c9>3 - Criar o EFS</font>
 
 - Neste passo, vamos criar um EFS para utilização das pastas públicas e estáticos do wordpress, do container de aplicação Wordpress. Vamos em EFS -> Create File System.
 - Selecionar a VPC criada, as subnets privadas e o Security Group do EFS.
