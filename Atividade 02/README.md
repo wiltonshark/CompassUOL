@@ -134,6 +134,14 @@ Pontos de atenção:
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Template/Template.png width=60%>
 
+## 6 - Criar o Target Group
+
+- O Target Group serve para dizer ao Load Balancer quais Instâncias ele vai conectar
+- Para isso vamos em EC2 -> Load Balancing -> Target Groups -> Create target froup
+- Selecionar o tipo Instances, protocolo HTTP, selecionar a VPC criada, como o auto scaling ainda não foi criado, não há instâncias para selecionar, vamos deixar assim por enquanto.
+
+<img src= width=60%>
+
 3 - LoadBalancer com acesso aos usuários
 
 4 - Availability Zone 1 e 2
