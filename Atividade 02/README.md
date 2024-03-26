@@ -24,9 +24,9 @@ Pontos de atenção:
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Atividade%2002.png width=60% >
 
-# | Parte prática |
+# <font color=12293b>| --- Parte prática --- |</b></font>
 
-### 1 - Criar uma VPC
+## <font color=00a1c9>1 - Criar uma VPC</b></font>
 
 - Neste primeiro passo vamos selecionar VPC e criar uma nova, incluindo a marcação do Nat Gateway durante o processo de criação. 
 - O Nat Gateway será utilizado para proporcionar conectividade à Internet para as instâncias privadas.
@@ -34,7 +34,7 @@ Pontos de atenção:
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/VPC/vpc.png width=60%>
 
-### 2 - Criar os Security Groups
+## <font color=00a1c9>2 - Criar os Security Groups</b></font>
 
 - Neste passo, vamos no menu de EC2 -> Network & Security ou VPC -> Security, Security Group -> Create Security Group e criar os grupo as seguir com seus protocolos e origem:
 
@@ -65,7 +65,7 @@ Pontos de atenção:
 | MYSQL/AURORA    | TCP       | 3306  | SG-PRIVATE |
 
 
-### 3 - Criar o EFS
+## <font color=00a1c9>3 - Criar o EFS</b></font>
 
 - Neste passo, vamos criar um EFS para utilização das pastas públicas e estáticos do wordpress, do container de aplicação Wordpress. Vamos em EFS -> Create File System.
 - Selecionar a VPC criada, as subnets privadas e o Security Group do EFS.
@@ -73,7 +73,7 @@ Pontos de atenção:
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/EFS/EFS.png width=60%>
 
 
-### 4 - Criar o RDS
+## <font color=00a1c9>4 - Criar o RDS</b></font>
 
 - Neste passo, vamos criar o banco de dados para o container de aplicação RDS database Mysql.
 - Vamos em Amazon RDS -> Dashboard -> Create database.
@@ -87,7 +87,7 @@ Pontos de atenção:
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/RDS/RDS.png width=60%>
 
 
-### 5 - Criar o Template da Instância
+## <font color=00a1c9><b>5 - Criar o Template da Instância</b></font>
 
 - Como vamos trabalhar com auto scaling, é essencial criar um template já com os detalhes do que vamos querer instalar na imagem.
 - Imagina ter que configurar manualmente toda instância que sobe quando o workload aumenta? Seria muito oneroso.
@@ -96,7 +96,8 @@ Pontos de atenção:
 - Vamos criar uma instância Amazon Linux t3.small, criar uma chave SSH, conectá-la ao security group SG-PRIVATE, colocar as tags pertinentes ao PB e incluir o user_data.sh para instalar o docker, wordpress, nfs-utils, montar o efs e criar o yaml para conectar ao rds.
 
 <details>
-  <summary>user_data.sh</summary>
+  <summary><font size=4 color=12293b><b>user_data.sh</b></font></summary>
+
   ```
   #!/bin/bash
   sudo su
