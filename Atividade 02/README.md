@@ -64,8 +64,9 @@ Pontos de atenção:
 |-----------------|-----------|-------|------------|
 | MYSQL/AURORA    | TCP       | 3306  | SG-PRIVATE |
 
+## 
 
-## <font color=00a1c9>3 - Criar o EFS</font>
+<font size=5 color=00a1c9><b>3 - Criar o EFS</b></font>
 
 - Neste passo, vamos criar um EFS para utilização das pastas públicas e estáticos do wordpress, do container de aplicação Wordpress. Vamos em EFS -> Create File System.
 - Selecionar a VPC criada, as subnets privadas e o Security Group do EFS.
