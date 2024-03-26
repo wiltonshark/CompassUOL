@@ -26,17 +26,19 @@ Pontos de atenção:
 
 # | --- Parte prática --- |
 
-## 1 - Criar uma VPC
+## 1 - Criar uma Virtual Private Cloud
 
 - Neste primeiro passo vamos selecionar VPC e criar uma nova, incluindo a marcação do Nat Gateway durante o processo de criação. 
 - O Nat Gateway será utilizado para proporcionar conectividade à Internet para as instâncias privadas.
-- Para isso, abra o menu de criação de VPC no seu console AWS -> Create VPC -> VPC and more -> Number of Availability Zones = 2, Numbero of public subnets = 2, Number of private subnets = 2, NAT gateways = 1 per AZ.
+- Para isso, abra o menu de criação de VPC no seu console AWS -> Create VPC -> VPC and more
+- Number of Availability Zones = 2, Numbero of public subnets = 2, Number of private subnets = 2, NAT gateways = 1 per AZ.
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/VPC/VPC.png width=60%>
 
 ## 2 - Criar os Security Groups
 
-- Neste passo, vamos no menu de EC2 -> Network & Security ou VPC -> Security, Security Group -> Create Security Group e criar os grupo as seguir com seus protocolos e origem:
+- Neste passo, vamos no menu de EC2 -> Network & Security ou VPC -> Security, Security Group -> Create Security Group
+- Criar os grupo as seguir com seus protocolos e origem:
 
 [SG-PUBLIC](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Security%20Groups/SG-PUBLIC.png) - do Load Balancer
 | Tipo            | Protocolo | Porta | Origem    |
@@ -64,15 +66,16 @@ Pontos de atenção:
 |-----------------|-----------|-------|------------|
 | MYSQL/AURORA    | TCP       | 3306  | SG-PRIVATE |
 
-## 3 - Criar o EFS
+## 3 - Criar o Elastic File System
 
-- Neste passo, vamos criar um EFS para utilização das pastas públicas e estáticos do wordpress, do container de aplicação Wordpress. Vamos em EFS -> Create File System.
+- Neste passo, vamos criar um EFS para utilização das pastas públicas e estáticos do wordpress, do container de aplicação Wordpress. 
+- Vamos em EFS -> Create File System.
 - Selecionar a VPC criada, as subnets privadas e o Security Group do EFS.
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/EFS/EFS.png width=60%>
 
 
-## 4 - Criar o RDS
+## 4 - Criar o Relational Database Service
 
 - Neste passo, vamos criar o banco de dados para o container de aplicação RDS database Mysql.
 - Vamos em Amazon RDS -> Dashboard -> Create database.
@@ -86,13 +89,17 @@ Pontos de atenção:
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/RDS/RDS.png width=60%>
 
 
-## 5 - Criar o Template da Instância
+## 5 - Criar o Template de Instâncias
 
 - Como vamos trabalhar com auto scaling, é essencial criar um template já com os detalhes do que vamos querer instalar na imagem.
 - Imagina ter que configurar manualmente toda instância que sobe quando o workload aumenta? Seria muito oneroso.
 - Para isso iremos em EC2 -> Launch Templates -> Create launch template.
 
-- Vamos criar uma instância Amazon Linux t3.small, criar uma chave SSH, conectá-la ao security group SG-PRIVATE, colocar as tags pertinentes ao PB e incluir o user_data.sh para instalar o docker, wordpress, nfs-utils, montar o efs e criar o yaml para conectar ao rds.
+- Neste passo, vamos criar uma instância Amazon Linux t3.small
+- Criar uma chave SSH
+- Conectá-la ao security group SG-PRIVATE
+- Colocar as tags pertinentes ao PB
+- Incluir o user_data.sh para instalar o docker, wordpress e nfs-utils; montar o efs e criar o yaml para conectar ao rds.
 
 <details>
   <summary>user_data.sh</summary>
@@ -136,11 +143,31 @@ Pontos de atenção:
 
 ## 6 - Criar o Target Group
 
-- O Target Group serve para dizer ao Load Balancer quais Instâncias ele vai conectar
-- Para isso vamos em EC2 -> Load Balancing -> Target Groups -> Create target froup
-- Selecionar o tipo Instances, protocolo HTTP, selecionar a VPC criada, como o auto scaling ainda não foi criado, não há instâncias para selecionar, vamos deixar assim por enquanto.
+- O Target Group serve para dizer ao Load Balancer quais Instâncias ele vai conectar.
+- Neste passo, para criar o TG, vamos em EC2 -> Load Balancing -> Target Groups -> Create target froup
+- Selecionar o tipo Instances, protocolo HTTP, selecionar a VPC criada.
+- Como o auto scaling ainda não foi criado, não há instâncias para selecionar. Vamos deixar assim por enquanto.
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/TargetGroup/TargetGroup.png width=60%>
+
+## 7 - Criar o Load Balancer
+
+- Neste passo vamos criar o LB.
+- Para isso vamos em EC2 -> Load Balancing -> Load Balancers -> Create load balancer.
+- Foi sugerido usar o Classic Load Balancer, mas como este não pode rotear para TG's irei selecionar o Application Load Balancer, achei melhor até pela descrição de prover roteamento e visibilidade de arquitetura de aplicações incluindo microserviços e contêineres.
+
+    `"Note: Classic Load Balancers can't route to target groups."`
+
+    `"Application Load Balancers provide advanced routing and visibility features targeted at application architectures, including microservices and containers."`
+
+- Em basic information seleciona o scheme Internet-facing
+- Selecione A VPC criada anteriormente
+- Em Mappings marque as duas Az's e selecione as duas Subnets Públicas
+- Em Listeners e Roteamento, selecione como grupo de destino o target group criado anteriormente.
+- Selecione o SG-PUBLIC para acesso à internet
+- Em Listeners and routing selecione o Target Group criado.
+
+<img src= width=60%>
 
 3 - LoadBalancer com acesso aos usuários
 
