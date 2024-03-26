@@ -169,6 +169,20 @@ Pontos de atenção:
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Load%20Balancer/LB2.png width=60%>
 
+## 8 - Criar o Auto Scaling
+
+- Essencial para escalabilidade da aplicação
+- Ele aumenta ou diminui as instâncias de acordo com a necessidade, impedindo que sua aplicação fique fora do ar por falta de recursos e evita gastos desnecessários.
+- Neste passo, para criar o ASG iremos em EC2 -> Auto Scaling -> Auto Scaling Groups e Create Auto Scaling Groups.
+- Selecione o Template criado anteriormente, a VPC e as 2 Subnets Privadas.
+- Attach to an existing load balancer - selecionar o target group.
+- Para o group Size vou colocar como Desire calacity = 2, Min = 2 e Max = 4.
+- Vou ativar o automatic scaling para 80% de utilização da CPU.
+
+<img src= width=60%>
+
+
+
 3 - LoadBalancer com acesso aos usuários
 
 4 - Availability Zone 1 e 2
