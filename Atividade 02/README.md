@@ -154,7 +154,7 @@ Pontos de atenção:
 
 - Neste passo vamos criar o LB.
 - Para isso vamos em EC2 -> Load Balancing -> Load Balancers -> Create load balancer.
-- Foi sugerido usar o Classic Load Balancer, mas como este não pode rotear para TG's irei selecionar o Application Load Balancer, achei melhor até pela descrição de prover roteamento e visibilidade de arquitetura de aplicações incluindo microserviços e contêineres.
+- Foi sugerido usar o Classic Load Balancer, mas como este não pode rotear para TG's irei selecionar o [Application Load Balancer](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Load%20Balancer/LB1.png), achei melhor até pela descrição de prover roteamento e visibilidade de arquitetura de aplicações incluindo microserviços e contêineres.
 
     `"Note: Classic Load Balancers can't route to target groups."`
 
@@ -167,7 +167,7 @@ Pontos de atenção:
 - Selecione o SG-PUBLIC para acesso à internet
 - Em Listeners and routing selecione o Target Group criado.
 
-<img src= width=60%>
+<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Load%20Balancer/LB2.png width=60%>
 
 3 - LoadBalancer com acesso aos usuários
 
