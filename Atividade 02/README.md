@@ -30,14 +30,14 @@ Pontos de atenção:
 
 - Neste primeiro passo vamos selecionar VPC e criar uma nova, incluindo a marcação do Nat Gateway durante o processo de criação. 
 - O Nat Gateway será utilizado para proporcionar conectividade à Internet para as instâncias privadas.
-- Para isso, abra o menu de criação de VPC no seu console AWS -> Create VPC -> VPC and more
+- Para isso, abra o menu de criação de VPC no console AWS -> Create VPC -> VPC and more.
 - Number of Availability Zones = 2, Numbero of public subnets = 2, Number of private subnets = 2, NAT gateways = 1 per AZ.
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/VPC/VPC.png width=60%>
 
 ## 2 - Criar os Security Groups
 
-- Neste passo, vamos no menu de EC2 -> Network & Security ou VPC -> Security, Security Group -> Create Security Group
+- Neste passo, vamos no menu de EC2 -> Network & Security ou VPC -> Security, Security Group -> Create Security Group.
 - Criar os grupo as seguir com seus protocolos e origem:
 
 [SG-PUBLIC](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Security%20Groups/SG-PUBLIC.png) - do Load Balancer
@@ -77,7 +77,7 @@ Pontos de atenção:
 
 ## 4 - Criar o Relational Database Service
 
-- Neste passo, vamos criar o banco de dados para o container de aplicação RDS database Mysql.
+- Neste passo, vamos criar o banco de dados para o container de aplicação RDS - Mysql.
 - Vamos em Amazon RDS -> Dashboard -> Create database.
 - Selecionar MySQL, Template = Free Tier.
 - Criar username e password, selecionar o tipo de instância e storage.
@@ -176,7 +176,7 @@ Pontos de atenção:
 - Neste passo, para criar o ASG iremos em EC2 -> Auto Scaling -> Auto Scaling Groups e Create Auto Scaling Groups.
 - Selecione o Template criado anteriormente, a VPC e as 2 Subnets Privadas.
 - Attach to an existing load balancer - selecionar o target group.
-- Para o group Size vou colocar como Desire calacity = 2, Min = 2 e Max = 4.
+- Para o group Size vou colocar como Desire capacity = 2, Min = 2 e Max = 4.
 - Vou ativar o automatic scaling para 80% de utilização da CPU.
 
 <img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Auto%20Scaling/ASG.png width=60%>
