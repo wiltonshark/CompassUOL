@@ -45,8 +45,6 @@ Pontos de atenção:
 |-----------------|-----------|-------|-----------|
 | HTTP            | TCP       | 80    | 0.0.0.0/0 |
 | HTTPS           | TCP       | 443   | ::/0      |
-| SSH             | TCP       | 22    | 0.0.0.0/0 |
-
 
 [SG-PRIVATE](./Prints/Security%20Groups/SG-PRIVATE.png) - das Instâncias EC2
 
@@ -56,12 +54,10 @@ Pontos de atenção:
 | HTTPS           | TCP       | 443   | SG-PUBLIC |
 | SSH             | TCP       | 22    | SG-PUBLIC |
 
-
 [SG-EFS](./Prints/Security%20Groups/SG-EFS.png) - para conexão do NFS
 | Tipo            | Protocolo | Porta | Origem     |
 |-----------------|-----------|-------|------------|
 | NFS             | TCP       | 2049  | SG-PRIVATE |
-
 
 [SG-RDS](./Prints/Security%20Groups/SG-RDS.png) - para conexão do banco de dados
 | Tipo            | Protocolo | Porta | Origem     |
