@@ -88,7 +88,7 @@ Pontos de atenção:
 - Selecionar a VPC e o Security Group criados.
 - Criar um nome inicial do Database.
 
-<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/RDS/RDS.png width=60%>
+<img src="./Prints/RDS/RDS.png" width=60%>
 
 
 ## 5 - Criar o Template de Instâncias
