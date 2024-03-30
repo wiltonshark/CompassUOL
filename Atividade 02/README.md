@@ -40,19 +40,21 @@ Pontos de atenção:
 - Neste passo, vamos no menu de EC2 -> Network & Security ou VPC -> Security, Security Group -> Create Security Group.
 - Criar os grupo as seguir com seus protocolos e origem:
 
-[SG-PUBLIC](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Security%20Groups/SG-PUBLIC.png) - do Load Balancer
+[SG-PUBLIC](./Prints/Security%20Groups/SG-PUBLIC.png) - do Load Balancer
 | Tipo            | Protocolo | Porta | Origem    |
 |-----------------|-----------|-------|-----------|
 | HTTP            | TCP       | 80    | 0.0.0.0/0 |
 | HTTPS           | TCP       | 443   | ::/0      |
+| SSH             | TCP       | 22    | 0.0.0.0/0 |
 
 
-[SG-PRIVATE](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Security%20Groups/SG-PRIVATE.png) - das Instâncias EC2
+[SG-PRIVATE](./Prints/Security%20Groups/SG-PRIVATE.png) - das Instâncias EC2
 
 | Tipo            | Protocolo | Porta | Origem    |
 |-----------------|-----------|-------|-----------|
 | HTTP            | TCP       | 80    | SG-PUBLIC |
 | HTTPS           | TCP       | 443   | SG-PUBLIC |
+| SSH             | TCP       | 22    | SG-PUBLIC |
 
 
 [SG-EFS](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Security%20Groups/SG-EFS.png) - para conexão do NFS
