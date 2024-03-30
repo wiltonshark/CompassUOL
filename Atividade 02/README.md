@@ -22,7 +22,7 @@ Pontos de atenção:
 - Aplicação Wordpress precisa estar rodando na porta 80 ou 8080;
 - Utilizar repositório git para versionamento;
 
-<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Atividade%2002.png width=60% >
+<img src="./Atividade 02.png" width=60% >
 
 # | --- Parte prática --- |
 
@@ -33,7 +33,7 @@ Pontos de atenção:
 - Para isso, abra o menu de criação de VPC no console AWS -> Create VPC -> VPC and more.
 - Number of Availability Zones = 2, Numbero of public subnets = 2, Number of private subnets = 2, NAT gateways = 1 per AZ.
 
-<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/VPC/VPC.png width=60%>
+<img src="./Prints/VPC/VPC.png" width=60%>
 
 ## 2 - Criar os Security Groups
 
@@ -57,13 +57,13 @@ Pontos de atenção:
 | SSH             | TCP       | 22    | SG-PUBLIC |
 
 
-[SG-EFS](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Security%20Groups/SG-EFS.png) - para conexão do NFS
+[SG-EFS](./Prints/Security%20Groups/SG-EFS.png) - para conexão do NFS
 | Tipo            | Protocolo | Porta | Origem     |
 |-----------------|-----------|-------|------------|
 | NFS             | TCP       | 2049  | SG-PRIVATE |
 
 
-[SG-RDS](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Security%20Groups/SG-RDS.png) - para conexão do banco de dados
+[SG-RDS](./Prints/Security%20Groups/SG-RDS.png) - para conexão do banco de dados
 | Tipo            | Protocolo | Porta | Origem     |
 |-----------------|-----------|-------|------------|
 | MYSQL/AURORA    | TCP       | 3306  | SG-PRIVATE |
@@ -74,7 +74,7 @@ Pontos de atenção:
 - Vamos em EFS -> Create File System.
 - Selecionar a VPC criada, as subnets privadas e o Security Group do EFS.
 
-<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/EFS/EFS.png width=60%>
+<img src="./Prints/EFS/EFS.png" width=60%>
 
 
 ## 4 - Criar o Relational Database Service
@@ -141,7 +141,7 @@ Pontos de atenção:
   ```
 </details>
 
-<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Template/Template.png width=60%>
+<img src="./Prints/Template/Template.png" width=60%>
 
 ## 6 - Criar o Target Group
 
@@ -150,13 +150,13 @@ Pontos de atenção:
 - Selecionar o tipo Instances, protocolo HTTP, selecionar a VPC criada.
 - Como o auto scaling ainda não foi criado, não há instâncias para selecionar. Vamos deixar assim por enquanto.
 
-<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/TargetGroup/TargetGroup.png width=60%>
+<img src="./Prints/TargetGroup/TargetGroup.png" width=60%>
 
 ## 7 - Criar o Load Balancer
 
 - Neste passo vamos criar o LB.
 - Para isso vamos em EC2 -> Load Balancing -> Load Balancers -> Create load balancer.
-- Foi sugerido usar o Classic Load Balancer, mas como este não pode rotear para TG's irei selecionar o [Application Load Balancer](https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Load%20Balancer/LB1.png), achei melhor até pela descrição de prover roteamento e visibilidade de arquitetura de aplicações incluindo microserviços e contêineres.
+- Foi sugerido usar o Classic Load Balancer, mas como este não pode rotear para TG's irei selecionar o [Application Load Balancer](./Prints/Load%20Balancer/LB1.png), achei melhor até pela descrição de prover roteamento e visibilidade de arquitetura de aplicações incluindo microserviços e contêineres.
 
     `"Note: Classic Load Balancers can't route to target groups."`
 
@@ -169,7 +169,7 @@ Pontos de atenção:
 - Selecione o SG-PUBLIC para acesso à internet
 - Em Listeners and routing selecione o Target Group criado.
 
-<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Load%20Balancer/LB2.png width=60%>
+<img src="./Prints/Load Balancer/LB2.png" width=60%>
 
 ## 8 - Criar o Auto Scaling
 
@@ -181,10 +181,10 @@ Pontos de atenção:
 - Para o group Size vou colocar como Desire capacity = 2, Min = 2 e Max = 4.
 - Vou ativar o automatic scaling para 80% de utilização da CPU.
 
-<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Auto%20Scaling/ASG.png width=60%>
+<img src="./Prints/Auto Scaling/ASG.png" width=60%>
 
 # | --- Teste --- |
 
 - Neste passo, se tudo estiver configurado corretamente, podemos acessar a aplicação pelo DNS do Load Balancer (e não pelo IP das instâncias).
 
-<img src=https://github.com/wiltonshark/CompassUOL/blob/main/Atividade%2002/Prints/Teste%20WP/TesteWP.png width=60%>
+<img src="./Prints/Teste WP/TesteWP.png" width=60%>
