@@ -51,7 +51,6 @@ Pontos de atenção:
 | Tipo            | Protocolo | Porta | Origem    |
 |-----------------|-----------|-------|-----------|
 | HTTP            | TCP       | 80    | SG-PUBLIC |
-| HTTPS           | TCP       | 443   | SG-PUBLIC |
 | SSH             | TCP       | 22    | SG-PUBLIC |
 
 [SG-EFS](./Prints/Security%20Groups/SG-EFS.png) - para conexão do NFS
@@ -72,7 +71,6 @@ Pontos de atenção:
 
 <img src="./Prints/EFS/EFS.png" width=60%>
 
-
 ## 4 - Criar o Relational Database Service
 
 - Neste passo, vamos criar o banco de dados para o container de aplicação RDS - Mysql.
@@ -85,7 +83,6 @@ Pontos de atenção:
 - Criar um nome inicial do Database.
 
 <img src="./Prints/RDS/RDS.png" width=60%>
-
 
 ## 5 - Criar o Template de Instâncias
 
@@ -139,33 +136,29 @@ Pontos de atenção:
 
 <img src="./Prints/Template/Template.png" width=60%>
 
-## 6 - Criar o Target Group
-
-- O Target Group serve para dizer ao Load Balancer quais Instâncias ele vai conectar.
-- Neste passo, para criar o TG, vamos em EC2 -> Load Balancing -> Target Groups -> Create target froup
-- Selecionar o tipo Instances, protocolo HTTP, selecionar a VPC criada.
-- Como o auto scaling ainda não foi criado, não há instâncias para selecionar. Vamos deixar assim por enquanto.
-
-<img src="./Prints/TargetGroup/TargetGroup.png" width=60%>
-
-## 7 - Criar o Load Balancer
+## 6 - Criar o Load Balancer
 
 - Neste passo vamos criar o LB.
 - Para isso vamos em EC2 -> Load Balancing -> Load Balancers -> Create load balancer.
-- Foi sugerido usar o Classic Load Balancer, mas como este não pode rotear para TG's irei selecionar o [Application Load Balancer](./Prints/Load%20Balancer/LB1.png), achei melhor até pela descrição de prover roteamento e visibilidade de arquitetura de aplicações incluindo microserviços e contêineres.
-
-    `"Note: Classic Load Balancers can't route to target groups."`
-
-    `"Application Load Balancers provide advanced routing and visibility features targeted at application architectures, including microservices and containers."`
-
+- Foi sugerido usar o Classic Load Balancer.
 - Em basic information seleciona o scheme Internet-facing
 - Selecione A VPC criada anteriormente
 - Em Mappings marque as duas Az's e selecione as duas Subnets Públicas
-- Em Listeners e Roteamento, selecione como grupo de destino o target group criado anteriormente.
 - Selecione o SG-PUBLIC para acesso à internet
-- Em Listeners and routing selecione o Target Group criado.
+- Em Listeners e Routing, vou colocar as portas http:80 e tcp:22
+- Em Health checks, vou selecionar tcp:80
 
-<img src="./Prints/Load Balancer/LB2.png" width=60%>
+<img src="./Prints/Load Balancer/LB.png" width=60%>
+
+## 7 - Criar o EndPoint
+- Este Endpoint serve de túnel da internet para às instâncias via SSH que não têm IP público.
+- Neste passo, para criá-lo vamos em VPC -> Endpoints -> Create endpoint
+- Em Service Category selecionar EC2 Instance Connect Endpoint
+- Em VPC, selecionar a anterior criada
+- Em Security Group selecionar a SG-PUBLIC
+- Em subnet, selecionar a private-1a
+
+<img src="./Prints/EndPoint/EP.png" width=60%>
 
 ## 8 - Criar o Auto Scaling
 
@@ -173,9 +166,10 @@ Pontos de atenção:
 - Ele aumenta ou diminui as instâncias de acordo com a necessidade, impedindo que sua aplicação fique fora do ar por falta de recursos e evita gastos desnecessários.
 - Neste passo, para criar o ASG iremos em EC2 -> Auto Scaling -> Auto Scaling Groups e Create Auto Scaling Groups.
 - Selecione o Template criado anteriormente, a VPC e as 2 Subnets Privadas.
-- Attach to an existing load balancer - selecionar o target group.
+- Attach to an existing load balancer - Choose from Classic Load Balancers, escolher o load Balancer criado
+- Health Check é recomendado ligar o ELB health checks
 - Para o group Size vou colocar como Desire capacity = 2, Min = 2 e Max = 4.
-- Vou ativar o automatic scaling para 80% de utilização da CPU.
+- Em target tracking, vou ativar o automatic scaling para 80% de utilização da CPU.
 
 <img src="./Prints/Auto Scaling/ASG.png" width=60%>
 
