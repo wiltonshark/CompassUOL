@@ -1,4 +1,4 @@
-## 📚 Documentação (Em Andamento)
+## 📚 Documentação
 
 Objetivo:
 
